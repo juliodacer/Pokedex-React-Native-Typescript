@@ -1,13 +1,12 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { View, Text } from 'react-native'
-import Icon from 'react-native-vector-icons/AntDesign'
+import Navigator from './src/navigator/Navigator'
 
 const App = () => {
   return (
-    <View>
-      <Text>App</Text>
-      <Icon name='rightcircle' size={20} color={'red'} />
-    </View>
+    <NavigationContainer>
+      <Navigator />
+    </NavigationContainer>
   )
 }
 
