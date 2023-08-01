@@ -7,10 +7,17 @@ const Stack = createNativeStackNavigator()
 
 const Navigator = () => {
   return (
-   <Stack.Navigator>
-    <Stack.Screen name='HomeScreen' component={HomeScreen} />
-    <Stack.Screen name='PokemonScreen' component={PokemonScreen} />
-   </Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        contentStyle: {
+          backgroundColor: '#fff'
+        }
+      }}
+    >
+      <Stack.Screen name='HomeScreen' component={HomeScreen} />
+      <Stack.Screen name='PokemonScreen' component={PokemonScreen} />
+    </Stack.Navigator>
   )
 }
 
