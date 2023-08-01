@@ -7,7 +7,7 @@ import { usePokemonPaginated } from '../hooks/usePokemonPaginated'
 const HomeScreen = () => {
 
   const { top } = useSafeAreaInsets()
-  usePokemonPaginated()
+  const { simplePokemonList } = usePokemonPaginated()
 
 
   return (
@@ -16,11 +16,11 @@ const HomeScreen = () => {
         source={require('../assets/pokebola.png')}
         style={styles.pokebolaSize}
       />
-      <Text style={{ 
-        ...styles.title, 
+      <Text style={{
+        ...styles.title,
         ...styles.globalMargin,
-        top: top + 20 
-        }}>Pokedex</Text>
+        top: top + 20
+      }}>Pokedex</Text>
     </>
   )
 }
