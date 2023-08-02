@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native'
 import React from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootStackParams } from '../navigator/Navigator'
@@ -15,11 +15,11 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
   const { top } = useSafeAreaInsets()
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <View
         style={{ ...styles.headerContainter, backgroundColor: color }}>
         <TouchableOpacity
-        onPress={() => navigation.pop()}
+          onPress={() => navigation.pop()}
           activeOpacity={0.8}
           style={{
             ...styles.backButton,
@@ -38,6 +38,14 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
         <FadeInImage
           style={styles.pokemonImage}
           uri={picture}
+        />
+      </View>
+      <View
+        style={styles.indicator}
+      >
+        <ActivityIndicator
+          color={color}
+          size={35}
         />
       </View>
     </View>
@@ -73,5 +81,10 @@ const styles = StyleSheet.create({
     height: 250,
     position: 'absolute',
     bottom: -20
+  },
+  indicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
