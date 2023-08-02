@@ -34,7 +34,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
                     simplePokemon: pokemon,
                     color: bgColor
                 })}
-            activeOpacity={0.6}
+            activeOpacity={0.5}
         >
             <View style={{
                 ...styles.cardContainer,
@@ -67,20 +67,17 @@ export const PokemonCard = ({ pokemon }: Props) => {
 const styles = StyleSheet.create({
     cardContainer: {
         marginHorizontal: 10,
-        // backgroundColor: 'red',
         height: 120,
-        // width: 160,
         marginBottom: 25,
         borderRadius: 10,
         shadowColor: "#000",
         shadowOffset: {
-            width: 0,
-            height: 12,
+            width: 2,
+            height: 2,
         },
-        shadowOpacity: 0.58,
-        shadowRadius: 4.60,
-        elevation: 7,
-        // overflow: 'hidden'
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     name: {
         color: '#fff',
