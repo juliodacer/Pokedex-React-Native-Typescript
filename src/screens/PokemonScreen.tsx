@@ -2,10 +2,11 @@ import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator } fr
 import React from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootStackParams } from '../navigator/Navigator'
-import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FadeInImage } from '../components/FadeInImage';
+import { usePokemon } from '../hooks/usePokemon';
+import { PokemonDetails } from '../components/PokemonDetails';
 
 interface Props extends NativeStackScreenProps<RootStackParams, 'PokemonScreen'> { }
 
@@ -13,6 +14,7 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
   const { simplePokemon, color } = route.params
   const { id, name, picture } = simplePokemon
   const { top } = useSafeAreaInsets()
+  const { isLoading, pokemon } = usePokemon(id)
 
   return (
     <View style={{ flex: 1 }}>
@@ -40,14 +42,20 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
           uri={picture}
         />
       </View>
-      <View
-        style={styles.indicator}
-      >
-        <ActivityIndicator
-          color={color}
-          size={35}
-        />
-      </View>
+      {
+        isLoading ? (
+          <View
+            style={styles.indicator}
+          >
+            <ActivityIndicator
+              color={color}
+              size={35}
+            />
+          </View>
+        ) : (
+          <PokemonDetails pokemon={pokemon} />
+        )
+      }
     </View>
   )
 }
